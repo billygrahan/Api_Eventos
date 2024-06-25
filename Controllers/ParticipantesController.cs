@@ -34,12 +34,31 @@ namespace Api_Eventos.Controllers
         {
             var participante = _context.Participantes.FirstOrDefault(p => p.ParticipanteId == id);
 
+            if (participante == null) NotFound("Participante não encontrado!!");
+            return participante;
+        }
+
+        [HttpGet("{id:int}/Eventos")]
+        public ActionResult<IEnumerable<Evento>> GetEventosByParticipante(int id)
+        {
+            // Encontrar o participante pelo id fornecido
+            var participante = _context.Participantes.Find(id);
+
             if (participante == null)
             {
                 return NotFound("Participante não encontrado!!");
             }
-            return participante;
+
+            // Carregar todos os eventos do banco de dados
+            var eventos = _context.Eventos.ToList();
+
+            // Filtrar eventos que contêm o participante
+            var eventosDoParticipante = eventos.Where(e => e.ParticipanteIds.Contains(id)).ToList();
+
+            return Ok(eventosDoParticipante);
         }
+
+
 
 
         [HttpPost]
@@ -68,10 +87,7 @@ namespace Api_Eventos.Controllers
         public ActionResult Delete(int id)
         {
             var participante = _context.Participantes.FirstOrDefault(p => p.ParticipanteId == id);
-            if (participante == null)
-            {
-                return NotFound("evento não encontrado!!!");
-            }
+            if (participante == null) return NotFound("evento não encontrado!!!");
             _context.Participantes.Remove(participante);
             _context.SaveChanges();
             return Ok(participante);

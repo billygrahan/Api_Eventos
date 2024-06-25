@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Api_Eventos.Models;
+using System.Text.Json;
 
 
 namespace Api_Eventos.Context
@@ -12,5 +13,7 @@ namespace Api_Eventos.Context
 
         public DbSet<Evento>? Eventos { get; set; }
         public DbSet<Participante>? Participantes { get; set; }
+
+        
     }
 }

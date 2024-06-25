@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api_Eventos.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240620015949_Migraçãoinicial")]
-    partial class Migraçãoinicial
+    [Migration("20240625003349_migraçãoinicial")]
+    partial class migraçãoinicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,6 +45,10 @@ namespace Api_Eventos.Migrations
 
                     b.Property<int>("Numero_Participantes")
                         .HasColumnType("int");
+
+                    b.Property<string>("ParticipanteIds")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.HasKey("EventoId");
 

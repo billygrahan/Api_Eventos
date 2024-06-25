@@ -43,6 +43,10 @@ namespace Api_Eventos.Migrations
                     b.Property<int>("Numero_Participantes")
                         .HasColumnType("int");
 
+                    b.Property<string>("ParticipanteIds")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.HasKey("EventoId");
 
                     b.ToTable("Eventos");

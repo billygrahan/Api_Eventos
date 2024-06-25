@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Api_Eventos.Migrations
 {
     /// <inheritdoc />
-    public partial class Migraçãoinicial : Migration
+    public partial class migraçãoinicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -25,7 +25,9 @@ namespace Api_Eventos.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Numero_Participantes = table.Column<int>(type: "int", nullable: false),
                     Data_Inicio = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Data_Fim = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    Data_Fim = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ParticipanteIds = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {

@@ -26,5 +26,8 @@ namespace Api_Eventos.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Data_Fim { get; set; }
+
+        public List<int> ParticipanteIds { get; set; } = new List<int>();
     }
+
 }
