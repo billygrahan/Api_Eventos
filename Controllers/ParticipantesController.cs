@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Api_Eventos.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Api_Eventos.Controllers
 {
@@ -17,11 +19,11 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Participante>> Get()
+        public async Task<ActionResult<IEnumerable<Participante>>> Get()
         {
             try
             {
-                return _context.Participantes.ToList();
+                return await _context.Participantes.ToListAsync();
             }
             catch (Exception)
             {
@@ -30,19 +32,22 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpGet("{id:int}", Name = "ObterParticipante")]
-        public ActionResult<Participante> Get(int id)
+        public async Task<ActionResult<Participante>> Get(int id)
         {
-            var participante = _context.Participantes.FirstOrDefault(p => p.ParticipanteId == id);
+            var participante = await _context.Participantes.FirstOrDefaultAsync(p => p.ParticipanteId == id);
 
-            if (participante == null) NotFound("Participante não encontrado!!");
+            if (participante == null)
+            {
+                return NotFound("Participante não encontrado!!");
+            }
             return participante;
         }
 
         [HttpGet("{id:int}/Eventos")]
-        public ActionResult<IEnumerable<Evento>> GetEventosByParticipante(int id)
+        public async Task<ActionResult<IEnumerable<Evento>>> GetEventosByParticipante(int id)
         {
             // Encontrar o participante pelo id fornecido
-            var participante = _context.Participantes.Find(id);
+            var participante = await _context.Participantes.FindAsync(id);
 
             if (participante == null)
             {
@@ -50,7 +55,7 @@ namespace Api_Eventos.Controllers
             }
 
             // Carregar todos os eventos do banco de dados
-            var eventos = _context.Eventos.ToList();
+            var eventos = await _context.Eventos.ToListAsync();
 
             // Filtrar eventos que contêm o participante
             var eventosDoParticipante = eventos.Where(e => e.ParticipanteIds.Contains(id)).ToList();
@@ -58,40 +63,40 @@ namespace Api_Eventos.Controllers
             return Ok(eventosDoParticipante);
         }
 
-
-
-
         [HttpPost]
-        public ActionResult Post([FromBody] Participante participante)
+        public async Task<ActionResult> Post([FromBody] Participante participante)
         {
-
             _context.Participantes.Add(participante);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return new CreatedAtRouteResult("ObterParticipante", new { id = participante.ParticipanteId }, participante);
         }
 
         [HttpPut("{id:int}")]
-        public ActionResult Put(int id, Participante participante)
+        public async Task<ActionResult> Put(int id, Participante participante)
         {
-            if (id != participante.ParticipanteId) return BadRequest();
+            if (id != participante.ParticipanteId)
+            {
+                return BadRequest();
+            }
 
             _context.Entry(participante).State = EntityState.Modified;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return Ok(participante);
         }
 
-
         [HttpDelete("{id:int}")]
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            var participante = _context.Participantes.FirstOrDefault(p => p.ParticipanteId == id);
-            if (participante == null) return NotFound("evento não encontrado!!!");
+            var participante = await _context.Participantes.FirstOrDefaultAsync(p => p.ParticipanteId == id);
+            if (participante == null)
+            {
+                return NotFound("Participante não encontrado!!!");
+            }
             _context.Participantes.Remove(participante);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return Ok(participante);
         }
     }
 }
-

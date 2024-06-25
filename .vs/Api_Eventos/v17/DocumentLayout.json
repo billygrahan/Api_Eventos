@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Billy Grahan\\Documents\\Api_Eventos\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|c:\\users\\billy grahan\\documents\\api_eventos\\controllers\\eventoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|solutionrelative:controllers\\eventoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|c:\\users\\billy grahan\\documents\\api_eventos\\models\\evento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|solutionrelative:models\\evento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|c:\\users\\billy grahan\\documents\\api_eventos\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|solutionrelative:context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|c:\\users\\billy grahan\\documents\\api_eventos\\controllers\\participantescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,12 +15,16 @@
       "RelativeMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|solutionrelative:models\\participante.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|c:\\users\\billy grahan\\documents\\api_eventos\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|c:\\users\\billy grahan\\documents\\api_eventos\\controllers\\eventoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|solutionrelative:controllers\\eventoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|c:\\users\\billy grahan\\documents\\api_eventos\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|solutionrelative:context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|c:\\users\\billy grahan\\documents\\api_eventos\\models\\evento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|solutionrelative:models\\evento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|c:\\users\\billy grahan\\documents\\api_eventos\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5E8AF23E-D4BC-4420-B810-2081855E59F2}|Api_Eventos.csproj|c:\\users\\billy grahan\\documents\\api_eventos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,7 +46,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Evento.cs",
               "DocumentMoniker": "C:\\Users\\Billy Grahan\\Documents\\Api_Eventos\\Models\\Evento.cs",
               "RelativeDocumentMoniker": "Models\\Evento.cs",
@@ -54,12 +54,11 @@
               "RelativeToolTip": "Models\\Evento.cs",
               "ViewState": "AQIAAAoAAAAAAAAAAAAAAB0AAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T02:19:31.678Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-20T02:19:31.678Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Participante.cs",
               "DocumentMoniker": "C:\\Users\\Billy Grahan\\Documents\\Api_Eventos\\Models\\Participante.cs",
               "RelativeDocumentMoniker": "Models\\Participante.cs",
@@ -84,20 +83,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "ParticipantesController.cs",
               "DocumentMoniker": "C:\\Users\\Billy Grahan\\Documents\\Api_Eventos\\Controllers\\ParticipantesController.cs",
               "RelativeDocumentMoniker": "Controllers\\ParticipantesController.cs",
               "ToolTip": "C:\\Users\\Billy Grahan\\Documents\\Api_Eventos\\Controllers\\ParticipantesController.cs",
               "RelativeToolTip": "Controllers\\ParticipantesController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAADUAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADUAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-20T17:10:10.567Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Billy Grahan\\Documents\\Api_Eventos\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -109,20 +108,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "EventosController.cs",
               "DocumentMoniker": "C:\\Users\\Billy Grahan\\Documents\\Api_Eventos\\Controllers\\EventosController.cs",
               "RelativeDocumentMoniker": "Controllers\\EventosController.cs",
               "ToolTip": "C:\\Users\\Billy Grahan\\Documents\\Api_Eventos\\Controllers\\EventosController.cs",
               "RelativeToolTip": "Controllers\\EventosController.cs",
-              "ViewState": "AQIAACMAAAAAAAAAAAAwwIIAAAAhAAAA",
+              "ViewState": "AQIAAFkAAAAAAAAAAAAuwHEAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-20T01:11:39.118Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Billy Grahan\\Documents\\Api_Eventos\\Context\\AppDbContext.cs",
               "RelativeDocumentMoniker": "Context\\AppDbContext.cs",
@@ -130,7 +129,8 @@
               "RelativeToolTip": "Context\\AppDbContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-24T19:44:21.466Z"
+              "WhenOpened": "2024-06-24T19:44:21.466Z",
+              "EditorCaption": ""
             }
           ]
         }
