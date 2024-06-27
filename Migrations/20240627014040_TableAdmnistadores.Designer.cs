@@ -4,6 +4,7 @@ using Api_Eventos.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api_Eventos.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240627014040_TableAdmnistadores")]
+    partial class TableAdmnistadores
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,27 +25,6 @@ namespace Api_Eventos.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("Api_Eventos.Models.Administrador", b =>
-                {
-                    b.Property<int>("AdministradorId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("AdministradorId"));
-
-                    b.Property<string>("EMail")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("AdministradorId");
-
-                    b.ToTable("Administradores");
-                });
-
             modelBuilder.Entity("Api_Eventos.Models.Evento", b =>
                 {
                     b.Property<int>("EventoId")
@@ -50,9 +32,6 @@ namespace Api_Eventos.Migrations
                         .HasColumnType("int");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("EventoId"));
-
-                    b.Property<int>("AdministradorId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("Data_Fim")
                         .HasColumnType("datetime(6)");
@@ -73,8 +52,6 @@ namespace Api_Eventos.Migrations
 
                     b.HasKey("EventoId");
 
-                    b.HasIndex("AdministradorId");
-
                     b.ToTable("Eventos");
                 });
 
@@ -93,22 +70,6 @@ namespace Api_Eventos.Migrations
                     b.HasKey("ParticipanteId");
 
                     b.ToTable("Paticipantes");
-                });
-
-            modelBuilder.Entity("Api_Eventos.Models.Evento", b =>
-                {
-                    b.HasOne("Api_Eventos.Models.Administrador", "Administrador")
-                        .WithMany("Eventos")
-                        .HasForeignKey("AdministradorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Administrador");
-                });
-
-            modelBuilder.Entity("Api_Eventos.Models.Administrador", b =>
-                {
-                    b.Navigation("Eventos");
                 });
 #pragma warning restore 612, 618
         }

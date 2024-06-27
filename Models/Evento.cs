@@ -28,6 +28,11 @@ namespace Api_Eventos.Models
         public DateTime Data_Fim { get; set; }
 
         public List<int> ParticipanteIds { get; set; } = new List<int>();
+
+        public int AdministradorId {  get; set; }
+
+        [JsonIgnore]
+        public Administrador? Administrador { get; set; }
     }
 
 }

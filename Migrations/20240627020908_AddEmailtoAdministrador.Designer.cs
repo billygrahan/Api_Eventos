@@ -4,6 +4,7 @@ using Api_Eventos.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api_Eventos.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240627020908_AddEmailtoAdministrador")]
+    partial class AddEmailtoAdministrador
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,11 +27,11 @@ namespace Api_Eventos.Migrations
 
             modelBuilder.Entity("Api_Eventos.Models.Administrador", b =>
                 {
-                    b.Property<int>("AdministradorId")
+                    b.Property<int>("AdmnistradorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("AdministradorId"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("AdmnistradorId"));
 
                     b.Property<string>("EMail")
                         .IsRequired()
@@ -38,7 +41,7 @@ namespace Api_Eventos.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("AdministradorId");
+                    b.HasKey("AdmnistradorId");
 
                     b.ToTable("Administradores");
                 });

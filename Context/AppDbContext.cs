@@ -13,7 +13,6 @@ namespace Api_Eventos.Context
 
         public DbSet<Evento>? Eventos { get; set; }
         public DbSet<Participante>? Participantes { get; set; }
-
-        
+        public DbSet<Administrador>? Administradores { get; set; }
     }
 }
