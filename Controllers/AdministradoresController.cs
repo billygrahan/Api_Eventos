@@ -19,11 +19,11 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Administrador>> GetTudo()
+        public async Task<ActionResult<IEnumerable<Administrador>>> GetTudo()
         {
             try
             {
-                return _context.Administradores.Include(p => p.Eventos).ToList();
+                return await _context.Administradores.Include(p => p.Eventos).ToListAsync();
             }
             catch (Exception)
             {
@@ -34,7 +34,7 @@ namespace Api_Eventos.Controllers
         [HttpGet("{id:int}", Name = "ObterAdministrador")]
         public async Task<ActionResult<Administrador>> Get(int id)
         {
-            var administrador = await _context.Administradores.FirstOrDefaultAsync(a => a.AdministradorId == id);
+            var administrador = await _context.Administradores.Include(p => p.Eventos).FirstOrDefaultAsync(a => a.AdministradorId == id);
             if (administrador == null) return NotFound("Administrador não encontrado!");
 
             return Ok(administrador);
@@ -55,6 +55,19 @@ namespace Api_Eventos.Controllers
         {
             if (id != administrador.AdministradorId) return BadRequest("Administradores incongruentes!");
             _context.Entry(administrador).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return Ok(administrador);
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var administrador = await _context.Administradores.FirstOrDefaultAsync(a => a.AdministradorId == id);
+            if (administrador == null)
+            {
+                return NotFound("administrador não encontrado!!!");
+            }
+            _context.Administradores.Remove(administrador);
             await _context.SaveChangesAsync();
             return Ok(administrador);
         }
