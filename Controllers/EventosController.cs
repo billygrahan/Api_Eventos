@@ -73,7 +73,7 @@ namespace Api_Eventos.Controllers
             return Ok(evento);
         }
 
-        [HttpPatch("{id:int}/AdicionarParticipante/{participanteId:int}")]
+        [HttpPatch("AdicionarParticipante_Evento/{id:int}/{participanteId:int}")]
         public async Task<ActionResult> AddParticipante(int id, int participanteId)
         {
             var evento = await _context.Eventos.FirstOrDefaultAsync(e => e.EventoId == id);
@@ -100,7 +100,7 @@ namespace Api_Eventos.Controllers
             return Ok(evento);
         }
 
-        [HttpPatch("{participanteId}/RemoverEvento/{eventoId}")]
+        [HttpPatch("RemoverParticioante_Evento/{participanteId}/{eventoId}")]
         public async Task<ActionResult> Patch(int participanteId, int eventoId)
         {
             var participante = await _context.Participantes.FindAsync(participanteId);
