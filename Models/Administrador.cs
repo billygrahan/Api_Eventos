@@ -21,6 +21,9 @@ namespace Api_Eventos.Models
         [Required]
         public string? EMail { get; set; }
 
+        [Required]
+        public string? Senha { get; set; }
+
         public ICollection<Evento>? Eventos { get; set; }
     }
 }

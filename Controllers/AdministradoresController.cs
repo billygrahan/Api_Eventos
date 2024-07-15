@@ -4,6 +4,7 @@ using Api_Eventos.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Api_Eventos.Controllers
 {
@@ -19,6 +20,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Administrador>>> GetTudo()
         {
             try
@@ -32,6 +34,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpGet("{id:int}", Name = "ObterAdministrador")]
+        [Authorize]
         public async Task<ActionResult<Administrador>> Get(int id)
         {
             var administrador = await _context.Administradores.Include(p => p.Eventos).FirstOrDefaultAsync(a => a.AdministradorId == id);
@@ -42,6 +45,7 @@ namespace Api_Eventos.Controllers
 
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult> Post([FromBody] Administrador administrador)
         {
             _context.Administradores.Add(administrador);
@@ -51,6 +55,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpPut("{id:int}")]
+        [Authorize]
         public async Task<ActionResult> Put(int id, Administrador administrador)
         {
             if (id != administrador.AdministradorId) return BadRequest("Administradores incongruentes!");
@@ -60,6 +65,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize]
         public async Task<ActionResult> Delete(int id)
         {
             var administrador = await _context.Administradores.FirstOrDefaultAsync(a => a.AdministradorId == id);
