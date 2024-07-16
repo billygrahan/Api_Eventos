@@ -30,9 +30,19 @@ namespace Api_Eventos.Controllers
             return Unauthorized("Credenciais inválidas");
         }
 
-        private bool IsValidUser(string username, string password)
+        private bool IsValidUser(string email, string password)
         {
-            return username == "billy" && password == "123456";
+            var administrador = _context.Administradores.FirstOrDefault(a => a.EMail == email);
+            if (administrador == null) return false;
+            return email == administrador.EMail && password == administrador.Senha;
         }
+
+        /*[HttpGet("/teste")]
+        public string teste(string username)
+        {
+            var administrador = _context.Administradores.FirstOrDefault(a => a.Nome == username);
+            if (administrador == null) return "adm não encontrado!";
+            return administrador.EMail;
+        }*/
     }
 }
