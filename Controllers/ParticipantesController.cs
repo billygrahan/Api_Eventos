@@ -20,7 +20,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = "ParticipantePolicy")]
+        [Authorize(Policy = "AdministradorPolicy")]
         public async Task<ActionResult<IEnumerable<Participante>>> Get()
         {
             try
@@ -34,6 +34,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpGet("{id:int}", Name = "ObterParticipante")]
+        [Authorize(Policy = "AdminOrParticipantPolicy")]
         public async Task<ActionResult<Participante>> Get(int id)
         {
             var participante = await _context.Participantes.FirstOrDefaultAsync(p => p.ParticipanteId == id);
@@ -46,6 +47,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpGet("{id:int}/Eventos")]
+        [Authorize(Policy = "AdminOrParticipantPolicy")]
         public async Task<ActionResult<IEnumerable<Evento>>> GetEventosByParticipante(int id)
         {
             // Encontrar o participante pelo id fornecido
@@ -66,6 +68,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "AdminOrParticipantPolicy")]
         public async Task<ActionResult> Post([FromBody] Participante participante)
         {
             _context.Participantes.Add(participante);
@@ -75,6 +78,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpPut("{id:int}")]
+        [Authorize(Policy = "AdminOrParticipantPolicy")]
         public async Task<ActionResult> Put(int id, Participante participante)
         {
             if (id != participante.ParticipanteId)
@@ -89,6 +93,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize(Policy = "AdminOrParticipantPolicy")]
         public async Task<ActionResult> Delete(int id)
         {
             var participante = await _context.Participantes.FirstOrDefaultAsync(p => p.ParticipanteId == id);

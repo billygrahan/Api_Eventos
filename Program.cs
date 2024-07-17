@@ -49,8 +49,12 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AdministradorPolicy", policy =>
         policy.RequireClaim("Role", "Administrador"));
-    options.AddPolicy("ParticipantePolicy", policy =>
-        policy.RequireClaim("Role", "Participante"));
+    
+    options.AddPolicy("AdminOrParticipantPolicy", policy =>
+        policy.RequireAssertion(context =>
+            context.User.HasClaim(c => (c.Type == "Role" && c.Value == "Administrador") ||
+                                       (c.Type == "Role" && c.Value == "Participante"))
+        ));
 });
 
 string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");

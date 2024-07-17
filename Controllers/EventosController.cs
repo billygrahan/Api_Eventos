@@ -4,6 +4,7 @@ using Api_Eventos.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Api_Eventos.Controllers
 {
@@ -19,6 +20,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "AdminOrParticipantPolicy")]
         public async Task<ActionResult<IEnumerable<Evento>>> Get()
         {
             try
@@ -32,6 +34,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpGet("{id:int}", Name = "ObterEvento")]
+        [Authorize(Policy = "AdministradorPolicy")]
         public async Task<ActionResult<Evento>> Get(int id)
         {
             var evento = await _context.Eventos.FirstOrDefaultAsync(p => p.EventoId == id);
@@ -44,6 +47,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpPost("Criar Evento")]
+        [Authorize(Policy = "AdministradorPolicy")]
         public async Task<ActionResult> Post([FromBody] Evento evento)
         {
             _context.Eventos.Add(evento);
@@ -53,6 +57,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpPut("{id:int}")]
+        [Authorize(Policy = "AdministradorPolicy")]
         public async Task<ActionResult> Put(int id, Evento evento)
         {
             _context.Entry(evento).State = EntityState.Modified;
@@ -61,6 +66,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize(Policy = "AdministradorPolicy")]
         public async Task<ActionResult> Delete(int id)
         {
             var evento = await _context.Eventos.FirstOrDefaultAsync(p => p.EventoId == id);
@@ -74,6 +80,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpPatch("AdicionarParticipante_Evento/{id:int}/{participanteId:int}")]
+        [Authorize(Policy = "AdminOrParticipantPolicy")]
         public async Task<ActionResult> AddParticipante(int id, int participanteId)
         {
             var evento = await _context.Eventos.FirstOrDefaultAsync(e => e.EventoId == id);
@@ -101,6 +108,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpPatch("RemoverParticioante_Evento/{participanteId}/{eventoId}")]
+        [Authorize(Policy = "AdminOrParticipantPolicy")]
         public async Task<ActionResult> Patch(int participanteId, int eventoId)
         {
             var participante = await _context.Participantes.FindAsync(participanteId);
