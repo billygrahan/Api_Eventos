@@ -45,7 +45,13 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddAuthentication().AddBearerToken();
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdministradorPolicy", policy =>
+        policy.RequireClaim("Role", "Administrador"));
+    options.AddPolicy("ParticipantePolicy", policy =>
+        policy.RequireClaim("Role", "Participante"));
+});
 
 string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 

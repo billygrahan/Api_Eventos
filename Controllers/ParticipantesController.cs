@@ -4,6 +4,7 @@ using Api_Eventos.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Api_Eventos.Controllers
 {
@@ -19,6 +20,7 @@ namespace Api_Eventos.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "ParticipantePolicy")]
         public async Task<ActionResult<IEnumerable<Participante>>> Get()
         {
             try

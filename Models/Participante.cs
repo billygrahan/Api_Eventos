@@ -12,5 +12,10 @@ namespace Api_Eventos.Models
         [Required]
         public string? Nome { get; set; }
 
+        [Required]
+        public string? EMail { get; set; }
+
+        [Required]
+        public string? Senha { get; set; }
     }
 }

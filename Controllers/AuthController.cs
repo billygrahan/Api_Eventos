@@ -14,14 +14,17 @@ namespace Api_Eventos.Controllers
             _context = context;
         }
 
-        [HttpGet("/login")]
-        public IActionResult Login(string username, string password)
+        [HttpGet("/login/adm")]
+        public IActionResult LoginAdm(string email, string password)
         {
-            if (IsValidUser(username, password))
+            if (IsValidUserAdm(email, password))
             {
                 var claimsPrincipal = new ClaimsPrincipal(
                 new ClaimsIdentity(
-                    new[] { new Claim(ClaimTypes.Name, username) },
+                    new[] { 
+                        new Claim(ClaimTypes.Email, email) ,
+                        new Claim("Role", "Administrador") // Adicionando a claim de Role
+                    },
                     BearerTokenDefaults.AuthenticationScheme
                     )
                 );
@@ -30,11 +33,38 @@ namespace Api_Eventos.Controllers
             return Unauthorized("Credenciais inválidas");
         }
 
-        private bool IsValidUser(string email, string password)
+        private bool IsValidUserAdm(string email, string password)
         {
             var administrador = _context.Administradores.FirstOrDefault(a => a.EMail == email);
             if (administrador == null) return false;
             return email == administrador.EMail && password == administrador.Senha;
+        }
+
+        [HttpGet("/login/participante")]
+        public IActionResult LoginPart(string email, string password)
+        {
+            if (IsValidUserPart(email, password))
+            {
+                var claimsPrincipal = new ClaimsPrincipal(
+                new ClaimsIdentity(
+                    new[] 
+                    { 
+                        new Claim(ClaimTypes.Email, email),
+                        new Claim("Role", "Participante") // Adicionando a claim de Role
+                    },
+                    BearerTokenDefaults.AuthenticationScheme
+                    )
+                );
+                return SignIn(claimsPrincipal);
+            }
+            return Unauthorized("Credenciais inválidas");
+        }
+
+        private bool IsValidUserPart(string email, string password)
+        {
+            var participante = _context.Participantes.FirstOrDefault(a => a.EMail == email);
+            if (participante == null) return false;
+            return email == participante.EMail && password == participante.Senha;
         }
 
         /*[HttpGet("/teste")]
